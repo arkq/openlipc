@@ -13,9 +13,6 @@ AC_ARG_ENABLE([kindle-env],
 	[AS_HELP_STRING([--enable-kindle-env], [use Kindle development environment])])
 AM_CONDITIONAL([ENABLE_KINDLE_ENV], [test "x$enable_kindle_env" = "xyes"])
 AM_COND_IF([ENABLE_KINDLE_ENV], [
-	AC_MSG_CHECKING([whether Kindle root image is mounted])
-	AC_CONFIG_SRCDIR([../../kindle/etc/upstart/kindle.conf])
-	AC_MSG_RESULT([yes])
 	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#ifndef __arm__
 		error: Not an ARM compiler!
 		#endif]])], [],

@@ -6,9 +6,9 @@ library one is able to expose application properties/settings, listen for or emi
 more (potentially). It is considered to be one of the core components of the Kindle device.
 
 This project is a reverse-engineered [header file](/include/openlipc.h) for this library. Since
-the header file itself might be not enough, the auxiliary tools (e.g. lipc-get-prop, lipc-probe)
-has been also reconstructed. They should be considered as a full replacements of the original ones
-(with few modifications/enhancements).
+the header file itself might be not enough, some auxiliary tools (e.g. lipc-get-prop, lipc-probe)
+has been also reconstructed. They intend to be full replacements for the original ones (with few
+modifications and enhancements).
 
 
 Installation

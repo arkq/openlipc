@@ -12,7 +12,7 @@ endif
 
 if WITH_LIPC_PROBE
 bin_PROGRAMS += lipc-probe
-lipc_probe_CFLAGS = @GLIB20_CFLAGS@ @GIO20_CFLAGS@
+lipc_probe_CFLAGS = $(AM_CFLAGS) @GLIB20_CFLAGS@ @GIO20_CFLAGS@
 lipc_probe_LDADD = $(LDADD) @GLIB20_LIBS@ @GIO20_LIBS@
 endif
 
