@@ -18,7 +18,7 @@ endif
 
 if ENABLE_KINDLE_ENV
 AM_LDFLAGS = \
-	-L$(sysrootdir)/usr/lib \
-	-L$(top_srcdir)/../../kindle/lib \
-	-L$(top_srcdir)/../../kindle/usr/lib
+	-L$(SYS_ROOTDIR)/usr/lib \
+	-L$(KINDLE_ROOTDIR)/lib \
+	-L$(KINDLE_ROOTDIR)/usr/lib
 endif
