@@ -23,7 +23,6 @@ AM_COND_IF([ENABLE_KINDLE_ENV], [
 		error: Not an ARM compiler!
 		#endif]])], [],
 		[AC_MSG_FAILURE([ARM-compatible compiler is required])])
-	AC_SUBST([SYS_ROOTDIR], [`$CC -v 2>&1 |grep -o 'sysroot=\S*' |cut -c 9-`])
 	if test "x$KINDLE_ROOTDIR" = "x"; then
 		AC_MSG_WARN([Kindle environment enabled, but Kindle root tree location not given!])
 		AC_MSG_WARN([Either set the KINDLE_ROOTDIR environmental variable or set the root])

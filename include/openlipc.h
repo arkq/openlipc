@@ -320,6 +320,42 @@ const char *LipcGetEventSource(LIPCevent *event);
 const char *LipcGetEventName(LIPCevent *event);
 
 /**
+ * Get the integer parameter from the event.
+ *
+ * @param event LIPC event handler.
+ * @param value The address where the integer value will be stored.
+ * @return The status code. */
+LIPCcode LipcGetIntParam(LIPCevent *event, int *value);
+
+/**
+ * Add the integer parameter to the event.
+ *
+ * @param event LIPC event handler.
+ * @param value The new value to add.
+ * @return The status code. */
+LIPCcode LipcAddIntParam(LIPCevent *event, int value);
+
+/**
+ * Get the string parameter from the event.
+ *
+ * @note
+ * The obtained memory pointer should not be passed to the LipcFreeString()
+ * function. It seems, that the memory is managed internally by the library.
+ *
+ * @param event LIPC event handler.
+ * @param value The address where the pointer to the string will be stored.
+ * @return The status code. */
+LIPCcode LipcGetStringParam(LIPCevent *event, char **value);
+
+/**
+ * Add the string parameter to the event.
+ *
+ * @param event LIPC event handler.
+ * @param value The new value to add.
+ * @return The status code. */
+LIPCcode LipcAddStringParam(LIPCevent *event, const char *value);
+
+/**
  * Event dispatching callback function.
  *
  * @param lipc LIPC library handler.

@@ -18,7 +18,8 @@ endif
 
 if ENABLE_KINDLE_ENV
 AM_LDFLAGS = \
-	-L$(SYS_ROOTDIR)/usr/lib \
 	-L$(KINDLE_ROOTDIR)/lib \
-	-L$(KINDLE_ROOTDIR)/usr/lib
+	-L$(KINDLE_ROOTDIR)/usr/lib \
+	-Wl,-rpath=$(KINDLE_ROOTDIR)/lib \
+	-Wl,-rpath=$(KINDLE_ROOTDIR)/usr/lib
 endif

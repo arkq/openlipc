@@ -21,10 +21,11 @@ Installation
 Or simply copy the header file into the system's include directory (e.g. /usr/include/).
 
 If you want to compile exemplary tools as well, consider using steps as follows (assuming you are
-performing cross-compilation, if not, omit all options):
+performing cross-compilation, if not, omit all options for the configure step):
 
 	$ autoreconf --install
 	$ mkdir build && cd build
+	$ export KINDLE_ROOTDIR=<absolute_patch_to_the_Kindle_root_directory>
 	$ ../configure --enable-kindle-env --host=armv7a-softfp-linux-gnueabi
 	$ make && make install
 
