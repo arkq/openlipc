@@ -31,10 +31,10 @@ AM_COND_IF([ENABLE_KINDLE_ENV], [
 ])
 
 
-AC_ARG_WITH([lipc-xxx-prop],
+AC_ARG_WITH([lipc-prop],
 	[AS_HELP_STRING([--without-lipc-prop], [omit lipc-get/set-prop replacements])],
-	[], [with_lipc_xxx_prop=yes])
-AM_CONDITIONAL([WITH_LIPC_XXX_PROP], [test "x$with_lipc_xxx_prop" = "xyes"])
+	[], [with_lipc_prop=yes])
+AM_CONDITIONAL([WITH_LIPC_PROP], [test "x$with_lipc_prop" = "xyes"])
 
 AC_ARG_WITH([lipc-probe],
 	[AS_HELP_STRING([--without-lipc-probe], [omit lipc-probe replacement])],

@@ -6,7 +6,7 @@ LDADD = -llipc
 
 bin_PROGRAMS =
 
-if WITH_LIPC_XXX_PROP
+if WITH_LIPC_PROP
 bin_PROGRAMS += lipc-get-prop lipc-set-prop
 endif
 
