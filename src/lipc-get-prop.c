@@ -4,7 +4,7 @@
  *
  * This file is a part of openlipc.
  *
- * This projected is licensed under the terms of the MIT license.
+ * This project is licensed under the terms of the MIT license.
  *
  * This source code is based on the reverse-engineered application, which is
  * a part of the Kindle firmware. The original lipc-get-prop application is

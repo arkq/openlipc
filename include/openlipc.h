@@ -5,7 +5,7 @@
  * This file is a part of [open]lipc.
  *
  * @copyright
- * This projected is licensed under the terms of the MIT license.
+ * This project is licensed under the terms of the MIT license.
  *
  * @note
  * This header file is based on the reverse-engineered proprietary library
