@@ -17,6 +17,8 @@
 #ifndef OPENLIPC_H
 #define OPENLIPC_H
 
+#include <stdarg.h>
+
 /**
  * @defgroup init Initialization
  * @{ */
@@ -214,9 +216,14 @@ void LipcFreeString(char *string);
  * *size argument. Then, the callback function will be called once more with
  * the requested amount of space in the *data buffer.
  *
- * When the setter is called, the memory pointed by the *data contains the
- * requested value which should be set for the property. The size parameter
- * should not be modified - it points to the mode string.
+ * When the setter is called, the data parameter contains the value itself or
+ * it points to the address, where the value is kept, respectively for the
+ * integer property or the string property. The size parameter should not be
+ * modified - it points to the mode string.
+ *
+ * For convenience, one can use one of the helper macros (LIPC_PGC_INT(),
+ * LIPC_PSC_INT(), LIPC_PGC_STR() or LIPC_PSC_STR()) for casting the data
+ * parameter into the proper type based on the callback usage.
  *
  * @param lipc LIPC library handler.
  * @param property The property name.
@@ -225,6 +232,15 @@ void LipcFreeString(char *string);
  * @return The status code. */
 typedef LIPCcode (*LipcPropCallback)(LIPC *lipc, const char *property,
                                      void *data, int *size);
+
+/** Cast property getter callback data parameter into the integer type. */
+#define LIPC_PGC_INT(data) (*(int *)(data))
+/** Cast property setter callback data parameter into the integer type. */
+#define LIPC_PSC_INT(data) ((long int)(data))
+/** Cast property getter callback data parameter into the string type. */
+#define LIPC_PGC_STR(data) ((char *)(data))
+/** Cast property setter callback data parameter into the string type. */
+#define LIPC_PSC_STR(data) ((char *)(data))
 
 /**
  * Register new integer property.
@@ -304,6 +320,68 @@ LIPCevent *LipcNewEvent(LIPC *lipc, const char *name);
  *
  * @param event LIPC event handler. */
 void LipcEventFree(LIPCevent *event);
+
+/**
+ * Send event object.
+ *
+ * @param lipc LIPC library handler.
+ * @param event LIPC event handler.
+ * @return The status code. */
+LIPCcode LipcSendEvent(LIPC *lipc, LIPCevent *event);
+
+/**
+ * Create and send event.
+ *
+ * This function is an equivalent of using LipcNewEvent(), LipcSendEvent() and
+ * LipcEventFree() all together. If you want to send a simple event object -
+ * one without any parameters - use this function.
+ *
+ * @param lipc LIPC library handler.
+ * @param name The event name.
+ * @return The status code. */
+LIPCcode LipcCreateAndSendEvent(LIPC *lipc, const char *name);
+
+/**
+ * Create and send event.
+ *
+ * This function creates an event object and sets its parameters according to
+ * the format string. This function takes variable number of arguments.
+ *
+ * LIPC supports two kinds of event parameters: integers and strings. It is
+ * possible to specify both of these types via the format string in the same
+ * way the printf() function family does. The format string can contain any
+ * number of "%d" or/and "%s" conversion specifiers. It is also possible to
+ * pass an empty string in the format argument, which will be an equivalent
+ * of calling the LipcCreateAndSendEvent().
+ *
+ * The format string also supports the ".0" precision modifier. However, its
+ * purpose is yet to be discovered.
+ *
+ * @param lipc LIPC library handler.
+ * @param name The event name.
+ * @param format The format string.
+ * @param ... Variable list of parameters.
+ * @return The status code. */
+LIPCcode LipcCreateAndSendEventWithParameters(LIPC *lipc, const char *name,
+                                              const char *format, ...);
+
+/**
+ * Create and send event.
+ *
+ * This function creates an event object and sets its parameters according to
+ * the format string. Parameter values should be passed as a variable argument
+ * list. For the list of all supported formats, see the documentation of the
+ * LipcCreateAndSendEventWithParameters() function.
+ *
+ * @param lipc LIPC library handler.
+ * @param name The event name.
+ * @param format The format string.
+ * @param ap Variable argument list.
+ * @return The status code. */
+LIPCcode LipcCreateAndSendEventWithVAListParameters(LIPC *lipc,
+                                                    const char *name,
+                                                    const char *format,
+                                                    va_list ap);
 
 /**
  * Get the source name associated with the event.
