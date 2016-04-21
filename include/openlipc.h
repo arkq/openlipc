@@ -197,101 +197,102 @@ void LipcFreeString(char *string);
 /**
  * Property getter/setter callback function.
  *
- * This callback function can be used either for getting attributes or for
- * setting ones. However, there is a slight difference in both action, also
- * there is a difference approach when getter is called for string property
- * vs integer property.
+ * This callback function can be used either for getting properties or for
+ * setting ones. However, there is a slight difference in both actions. Also,
+ * there is a difference when the callback function is called for getting a
+ * string, and when it is called for getting an integer.
  *
  * When the getter is called for the integer property, one has to set the
- * address pointed by the *data to the desired integer value. The address
- * pointed by the *size parameter should not be modified. In fact the size
- * parameter points to the mode string passed during property creation. It
- * seems to be a bug-prone "design", but it might be as well some hidden
- * feature.
+ * address pointed by the *value to the desired integer value.
  *
- * When the getter is called for the string property, address pointed by the
- * *data has preallocated the size available in the *size parameter. If this
- * size is too small for copping desired string value, one should return the
- * LIPC_ERROR_BUFFER_TOO_SMALL code and pass the required buffer size in the
- * *size argument. Then, the callback function will be called once more with
- * the requested amount of space in the *data buffer.
+ * When the getter is called for the string property, the buffer pointed by
+ * the *value is preallocated to the initial size. This size is available in
+ * the *data parameter. If the buffer is too small for storing desired string
+ * value, one should return the LIPC_ERROR_BUFFER_TOO_SMALL code and pass the
+ * required buffer size in the *data argument. In such a case, the callback
+ * function will be called again with the requested buffer size.
  *
- * When the setter is called, the data parameter contains the value itself or
- * it points to the address, where the value is kept, respectively for the
- * integer property or the string property. The size parameter should not be
- * modified - it points to the mode string.
+ * When the setter is called, the value parameter contains the integer value
+ * itself or it points to the memory buffer, respectively for the integer
+ * property or for the string property.
  *
- * For convenience, one can use one of the helper macros (LIPC_PGC_INT(),
- * LIPC_PSC_INT(), LIPC_PGC_STR() or LIPC_PSC_STR()) for casting the data
- * parameter into the proper type based on the callback usage.
+ * For convenience, one can use one of the helper macros (LIPC_GETTER_VTOI(),
+ * LIPC_SETTER_VTOI(), LIPC_GETTER_VTOS() or LIPC_SETTER_VTOS()) for casting
+ * the value parameter into the proper type based on the callback type.
+ *
+ * In all cases, with the exception of the string property getter, the data
+ * parameter will contain the value passed during the property registration.
+ *
+ * The return value of the callback function will be used as a return value
+ * for the caller, e.g. LipcGetIntProperty(). One exception from this rule is
+ * a getter for a string property, where the LIPC_ERROR_BUFFER_TOO_SMALL code
+ * is used internally by the LIPC library.
  *
  * @param lipc LIPC library handler.
  * @param property The property name.
- * @param data Pointer to the memory area for data storage.
- * @param size The size of the memory area.
+ * @param value Pointer to the memory area for a value storage.
+ * @param data Data passed during property registration.
  * @return The status code. */
 typedef LIPCcode (*LipcPropCallback)(LIPC *lipc, const char *property,
-                                     void *data, int *size);
+                                     void *value, void *data);
 
-/** Cast property getter callback data parameter into the integer type. */
-#define LIPC_PGC_INT(data) (*(int *)(data))
-/** Cast property setter callback data parameter into the integer type. */
-#define LIPC_PSC_INT(data) ((long int)(data))
-/** Cast property getter callback data parameter into the string type. */
-#define LIPC_PGC_STR(data) ((char *)(data))
-/** Cast property setter callback data parameter into the string type. */
-#define LIPC_PSC_STR(data) ((char *)(data))
+/** Cast the value parameter of the getter callback into the integer type. */
+#define LIPC_GETTER_VTOI(value) (*(int *)(value))
+/** Cast the value parameter of the setter callback into the integer type. */
+#define LIPC_SETTER_VTOI(value) ((long int)(value))
+/** Cast the value parameter of the getter callback into the char * type. */
+#define LIPC_GETTER_VTOS(value) ((char *)(value))
+/** Cast the value parameter of the setter callback into the char * type. */
+#define LIPC_SETTER_VTOS(value) ((char *)(value))
 
 /**
  * Register new integer property.
  *
- * @warning
- * The memory pointer passed via the mode parameter is saved in the library.
- * Be aware when passing memory allocated on the stack!
+ * The access mode of the property is determined by the presence of the getter
+ * and/or the setter callback function. Passing NULL value in the getter and
+ * the setter parameters will make the property read-only, however it will not
+ * be possible to retrieve any value, so it is pointless to do so.
  *
  * @param lipc LIPC library handler.
  * @param property The property name.
  * @param getter Getter callback if property is readable.
  * @param setter Setter callback if property is writable.
- * @param mode The mode string.
+ * @param data Data pointer passed to the callback function.
  * @return The status code. */
 LIPCcode LipcRegisterIntProperty(LIPC *lipc, const char *property,
                                  LipcPropCallback getter,
                                  LipcPropCallback setter,
-                                 char *mode);
+                                 void *data);
 
 /**
  * Register new string property.
  *
- * @warning
- * The memory pointer passed via the mode parameter is saved in the library.
- * Be aware when passing memory allocated on the stack!
+ * For the information about the property access mode, see the documentation
+ * of the LipcRegisterIntProperty().
  *
  * @param lipc LIPC library handler.
  * @param property The property name.
  * @param getter Getter callback if property is readable.
  * @param setter Setter callback if property is writable.
- * @param mode The mode string.
+ * @param data Data pointer passed to the callback function.
  * @return The status code. */
 LIPCcode LipcRegisterStringProperty(LIPC *lipc, const char *property,
                                     LipcPropCallback getter,
                                     LipcPropCallback setter,
-                                    char *mode);
+                                    void *data);
 
 /**
  * Unregister property.
  *
- * If mode is not NULL, the address of the mode string passed during property
- * registration will be stored in the address pointed by the *mode. Via this
- * mechanism one is able to free memory allocated for the mode string - for
- * more informations about the mode string memory management see the warning
- * section in the LipcRegisterIntProperty() documentation.
+ * If the data parameter is not NULL, the address of the data pointer passed
+ * during the property registration will be stored in the address pointed by
+ * the *data.
  *
  * @param lipc LIPC library handler.
  * @param property The property name.
- * @param mode Address where the mode string pointer is returned.
+ * @param data Address where the data pointer is returned.
  * @return The status code. */
-LIPCcode LipcUnregisterProperty(LIPC *lipc, const char *property, char **mode);
+LIPCcode LipcUnregisterProperty(LIPC *lipc, const char *property, void **data);
 
 /** @}
  ***/

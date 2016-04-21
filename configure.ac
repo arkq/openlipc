@@ -46,5 +46,5 @@ AM_COND_IF([WITH_LIPC_PROBE], [
 ])
 
 
-AC_CONFIG_FILES([Makefile src/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile test/Makefile])
 AC_OUTPUT
