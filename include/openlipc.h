@@ -20,7 +20,7 @@
 #include <stdarg.h>
 
 /**
- * @defgroup init Initialization
+ * @defgroup lipc-init Initialization
  * @{ */
 
 /** LIPC library handler. */
@@ -110,7 +110,7 @@ const char *LipcGetErrorString(LIPCcode code);
  ***/
 
 /**
- * @defgroup props Properties
+ * @defgroup lipc-props Properties
  * @{ */
 
 /**
@@ -298,7 +298,7 @@ LIPCcode LipcUnregisterProperty(LIPC *lipc, const char *property, void **data);
  ***/
 
 /**
- * @defgroup events Events
+ * @defgroup lipc-events Events
  * @{ */
 
 /** LIPC event handler. */
@@ -506,7 +506,7 @@ LIPCcode LipcUnsubscribeExt(LIPC *lipc, const char *service,
  ***/
 
 /**
- * @defgroup logs Logging
+ * @defgroup lipc-logs Logging
  * @{ */
 
 /**
