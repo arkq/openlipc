@@ -435,6 +435,13 @@ LIPCcode LipcGetStringParam(LIPCevent *event, char **value);
 LIPCcode LipcAddStringParam(LIPCevent *event, const char *value);
 
 /**
+ * Rewind parameters of the event.
+ *
+ * @param event LIPC event handler.
+ * @return The status code. */
+LIPCcode LipcRewindParams(LIPCevent *event);
+
+/**
  * Event dispatching callback function.
  *
  * @param lipc LIPC library handler.

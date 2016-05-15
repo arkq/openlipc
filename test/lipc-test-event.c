@@ -31,12 +31,18 @@ LIPCcode event(LIPC *lipc, const char *name, LIPCevent *event, void *data) {
 	assert((long int)data == 0xABCD);
 
 	if (event_count == 0) {
+
 		LipcGetIntParam(event, &value_i);
 		assert(value_i == 0xDEAD);
 		LipcGetStringParam(event, &value_s);
 		assert(strcmp(value_s, "OK") == 0);
 		LipcGetIntParam(event, &value_i);
 		assert(value_i == 0xE220);
+
+		LipcRewindParams(event);
+		LipcGetIntParam(event, &value_i);
+		assert(value_i == 0xDEAD);
+
 	}
 
 	event_count++;
