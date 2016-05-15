@@ -10,6 +10,8 @@ the header file itself might be not enough, some auxiliary tools (e.g. lipc-get-
 has been also reconstructed. They intend to be full replacements for the original ones (with few
 modifications and enhancements).
 
+For usage information consult the online [reference manual](https://arkq.github.io/openlipc/).
+
 
 Installation
 ------------
