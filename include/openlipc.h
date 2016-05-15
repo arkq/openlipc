@@ -4,12 +4,45 @@
  *
  * This file is a part of [open]lipc.
  *
+ * @mainpage
+ * LIPC is a proprietary (developed by the Amazon) IPC library based on D-Bus.
+ * It links internal Kindle components together. Via this library one is able
+ * to expose application properties (setters and getters), access properties
+ * of other applications and listen for or emit events.
+ *
+ * The [open]lipc project is a reverse-engineered header file for this library.
+ * It can be used to build native applications for Kindle device with an easy
+ * and simple access to the core system components exposed via the LIPC.
+ *
+ * The basic usage of this header file might be as follows:
+ * @code
+ * #include <stdio.h>
+ * #include <openlipc.h>
+ *
+ * int main(void) {
+ *
+ *   LIPC *lipc;
+ *   char *status;
+ *
+ *   if ((lipc = LipcOpenNoName()) == NULL)
+ *     return 1;
+ *
+ *   if (LipcGetStringProperty(lipc, "com.lab126.powerd", "status", &status) == LIPC_OK) {
+ *     puts(status);
+ *     LipcFreeString(status);
+ *   }
+ *
+ *   LipcClose(lipc);
+ *   return 0;
+ * }
+ * @endcode
+ *
  * @copyright
  * This project is licensed under the terms of the MIT license.
  *
  * @note
- * This header file is based on the reverse-engineered proprietary library
- * lipc, which is a part of the Kindle firmware. The lipc library itself is
+ * The [open]lipc header file is based on the reverse-engineered proprietary
+ * library, which is a part of the Kindle firmware. The LIPC library itself is
  * copyrighted under the terms of the Amazon Technologies, Inc.
  *
  */
@@ -21,6 +54,7 @@
 
 /**
  * @defgroup lipc-init Initialization
+ * @brief Library initialization and error handling.
  * @{ */
 
 /** LIPC library handler. */
@@ -111,6 +145,7 @@ const char *LipcGetErrorString(LIPCcode code);
 
 /**
  * @defgroup lipc-props Properties
+ * @brief Accessing and exposing application properties.
  * @{ */
 
 /**
@@ -299,6 +334,7 @@ LIPCcode LipcUnregisterProperty(LIPC *lipc, const char *property, void **data);
 
 /**
  * @defgroup lipc-events Events
+ * @brief Listening for and emitting events.
  * @{ */
 
 /** LIPC event handler. */
@@ -514,6 +550,7 @@ LIPCcode LipcUnsubscribeExt(LIPC *lipc, const char *service,
 
 /**
  * @defgroup lipc-logs Logging
+ * @brief LIPC internal logging.
  * @{ */
 
 /**
