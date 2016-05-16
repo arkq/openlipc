@@ -39,10 +39,33 @@
 <div class="title">[open]lipc Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>LIPC is a proprietary (developed by the Amazon) IPC library based on D-Bus. It links internal Kindle components together. Via this library one is able to expose application properties (setters and getters), access properties of other applications and listen for or emit events.</p>
+<p>The [open]lipc project is a reverse-engineered header file for this library. It can be used to build native applications for Kindle device with an easy and simple access to the core system components exposed via the LIPC.</p>
+<p>The basic usage of this header file might be as follows: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;openlipc.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
+<div class="line"></div>
+<div class="line">  <a class="code" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc;</div>
+<div class="line">  <span class="keywordtype">char</span> *status;</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span> ((lipc = <a class="code" href="group__lipc-init.html#gaee381b2f9e9e36284a58cd98a928fc45">LipcOpenNoName</a>()) == NULL)</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="group__lipc-props.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, <span class="stringliteral">&quot;com.lab126.powerd&quot;</span>, <span class="stringliteral">&quot;status&quot;</span>, &amp;status) == LIPC_OK) {</div>
+<div class="line">    puts(status);</div>
+<div class="line">    <a class="code" href="group__lipc-props.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString</a>(status);</div>
+<div class="line">  }</div>
+<div class="line"></div>
+<div class="line">  <a class="code" href="group__lipc-init.html#ga56515d5c74877ef2fb24956d1b8bc30b">LipcClose</a>(lipc);</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section copyright"><dt>Copyright</dt><dd>This project is licensed under the terms of the MIT license.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The [open]lipc header file is based on the reverse-engineered proprietary library, which is a part of the Kindle firmware. The LIPC library itself is copyrighted under the terms of the Amazon Technologies, Inc. </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 15 2016 18:07:54 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 16 2016 15:32:14 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>
