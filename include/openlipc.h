@@ -51,6 +51,7 @@
 #define OPENLIPC_H
 
 #include <stdarg.h>
+#include <stddef.h>
 
 /**
  * @defgroup lipc-init Initialization
@@ -61,7 +62,7 @@
 typedef void LIPC;
 
 /**
- * Status codes returned by all sorts of lipc library functions.
+ * Status codes returned by all sorts of LIPC library functions.
  *
  * @warning
  * This list was obtained from the LipcGetErrorString() function and may
@@ -144,8 +145,169 @@ const char *LipcGetErrorString(LIPCcode code);
  ***/
 
 /**
- * @defgroup lipc-props Properties
- * @brief Accessing and exposing application properties.
+ * @defgroup lipc-hasharray HashArray
+ * @brief Hash-array data structure.
+ * @{ */
+
+/** LIPC hash-array handler. */
+typedef void LIPCha;
+
+/**
+ * Possible data types, which can be stored in the value of the hash component
+ * in the hash-array data structure. */
+typedef enum {
+	LIPC_HASHARRAY_INT = 0,
+	LIPC_HASHARRAY_STRING = 1,
+	LIPC_HASHARRAY_BLOB = 2,
+} LIPCHasharrayType;
+
+/**
+ * Initialize new hash-array data structure.
+ *
+ * @param lipc LIPC library handler.
+ * @return The LIPC hash-array handler or NULL upon error. */
+LIPCha *LipcHasharrayNew(LIPC *lipc);
+
+/**
+ * Free resources associated with the hash-array handler.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param destroy If TRUE, the underlying shared memory segment will be marked
+ *   to be destroyed.
+ * @return The status code. */
+LIPCcode LipcHasharrayFree(LIPCha *ha, int destroy);
+
+/**
+ * Free resources associated with the hash-array handler.
+ *
+ * This function is an equivalent of calling the LipcHasharrayFree() function
+ * with the destroy parameter set to TRUE.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @return The status code. */
+LIPCcode LipcHasharrayDestroy(LIPCha *ha);
+
+/**
+ * Get the number of elements in the array component of the hash-array data
+ * structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @return The array size or -1 upon error. */
+int LipcHasharrayGetHashCount(LIPCha *ha);
+
+/**
+ * Append new hash map to the hash-array structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The address where the index of newly added hash map (hence,
+ *   the size of the array) will be stored.
+ * @return The status code. */
+LIPCcode LipcHasharrayAddHash(LIPCha *ha, size_t *index);
+
+/**
+ * Get keys stored in the hash map of the hash-array data structure.
+ *
+ * In order to determine the number of keys at the given index, one should
+ * call this function with the count parameter initialized to 0. The number
+ * of available keys will be returned back in this parameter - in fact the
+ * count parameter is always modified, and the number of keys is returned in
+ * it (be careful when reusing this variable for iteration over keys array).
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param keys The array which can store up to the count number of string
+ *   pointers - keys.
+ * @param count The address where the number of keys to fetch is given.
+ * @return The status code. */
+LIPCcode LipcHasharrayKeys(LIPCha *ha, int index, const char *keys[],
+                           size_t *count);
+
+/**
+ * Get the data type stored in the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to check.
+ * @param type The address where the data type will be stored.
+ * @param size The address where the size of the value will be stored.
+ * @return The status code. */
+LIPCcode LipcHasharrayCheckKey(LIPCha *ha, int index, const char *key,
+                               LIPCHasharrayType *type, size_t *size);
+
+/**
+ * Get the integer value form the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to get.
+ * @param value The address where the integer value will be stored.
+ * @return The status code. */
+LIPCcode LipcHasharrayGetInt(LIPCha *ha, int index, const char *key,
+                             int *value);
+
+/**
+ * Put the integer value into the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to set.
+ * @param value The value to set.
+ * @return The status code. */
+LIPCcode LipcHasharrayPutInt(LIPCha *ha, int index, const char *key,
+                             int value);
+
+/**
+ * Get the string value form the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to get.
+ * @param value The address where the pointer to the string will be stored.
+ * @return The status code. */
+LIPCcode LipcHasharrayGetString(LIPCha *ha, int index, const char *key,
+                                char **value);
+
+/**
+ * Put the string value into the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to set.
+ * @param value The value to set.
+ * @return The status code. */
+LIPCcode LipcHasharrayPutString(LIPCha *ha, int index, const char *key,
+                                const char *value);
+
+/**
+ * Get the blob data from the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to get.
+ * @param data The address where the pointer to the data will be stored.
+ * @param size The address where the size of the data will be stored.
+ * @return The status code. */
+LIPCcode LipcHasharrayGetBlob(LIPCha *ha, int index, const char *key,
+                              unsigned char *data[], size_t *size);
+
+/**
+ * Put the blob data into the hash map of the hash-array data structure.
+ *
+ * @param ha The LIPC hash-array handler.
+ * @param index The 0-based index in the array.
+ * @param key The key name to set.
+ * @param data The data to set.
+ * @param size The size of the data.
+ * @return The status code. */
+LIPCcode LipcHasharrayPutBlob(LIPCha *ha, int index, const char *key,
+                              const unsigned char *data, size_t size);
+
+/** @}
+ ***/
+
+/**
+ * @defgroup lipc-property Properties
+ * @brief Accessing and exposing properties.
  * @{ */
 
 /**
@@ -205,6 +367,20 @@ LIPCcode LipcGetStringProperty(LIPC *lipc, const char *service,
  * @return The status code. */
 LIPCcode LipcSetStringProperty(LIPC *lipc, const char *service,
                                const char *property, const char *value);
+
+/**
+ * Access the value of the hash-array property.
+ *
+ * The hash-array handler passed to this function has to be initialized with
+ * the LipcHasharrayNew().
+ *
+ * @param lipc LIPC library handler.
+ * @param service The service name.
+ * @param property The property name.
+ * @param ha The LIPC hash-array handler.
+ * @return The status code. */
+LIPCcode LipcAccessHasharrayProperty(LIPC *lipc, const char *service,
+                                     const char *property, LIPCha *ha);
 
 /**
  * Convenience macro for getting all properties of given service.
@@ -317,6 +493,18 @@ LIPCcode LipcRegisterStringProperty(LIPC *lipc, const char *property,
                                     void *data);
 
 /**
+ * Register new hash-array property.
+ *
+ * @param lipc LIPC library handler.
+ * @param property The property name.
+ * @param callback Getter and setter callback function.
+ * @param data Data pointer passed to the callback function.
+ * @return The status code. */
+LIPCcode LipcRegisterHasharrayProperty(LIPC *lipc, const char *property,
+                                       LipcPropCallback callback,
+                                       void *data);
+
+/**
  * Unregister property.
  *
  * If the data parameter is not NULL, the address of the data pointer passed
@@ -333,7 +521,7 @@ LIPCcode LipcUnregisterProperty(LIPC *lipc, const char *property, void **data);
  ***/
 
 /**
- * @defgroup lipc-events Events
+ * @defgroup lipc-event Events
  * @brief Listening for and emitting events.
  * @{ */
 
@@ -549,7 +737,7 @@ LIPCcode LipcUnsubscribeExt(LIPC *lipc, const char *service,
  ***/
 
 /**
- * @defgroup lipc-logs Logging
+ * @defgroup lipc-log Logging
  * @brief LIPC internal logging.
  * @{ */
 

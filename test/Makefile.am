@@ -4,13 +4,9 @@
 AM_CFLAGS = -I$(top_srcdir)/include
 LDADD = -llipc
 
-#TESTS = \
-#	lipc-test-init \
-#	lipc-test-prop \
-#	lipc-test-event
-
 check_PROGRAMS = \
 	lipc-test-init \
+	lipc-test-hasharray \
 	lipc-test-prop \
 	lipc-test-event
 
