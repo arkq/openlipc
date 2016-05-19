@@ -44,50 +44,54 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Accessing and exposing application properties.  
+<p>Accessing and exposing properties.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gab16e9ea61f0938cea7d465b6c7b96530"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#gab16e9ea61f0938cea7d465b6c7b96530">LipcGetProperties</a>(lipc,  service,  value)&#160;&#160;&#160;<a class="el" href="group__lipc-props.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, service, &quot;_properties&quot;, value)</td></tr>
+<tr class="memitem:gab16e9ea61f0938cea7d465b6c7b96530"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#gab16e9ea61f0938cea7d465b6c7b96530">LipcGetProperties</a>(lipc,  service,  value)&#160;&#160;&#160;<a class="el" href="group__lipc-property.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, service, &quot;_properties&quot;, value)</td></tr>
 <tr class="separator:gab16e9ea61f0938cea7d465b6c7b96530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga68f9e2c8dd6674cb83f66f7ed5e49938"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga68f9e2c8dd6674cb83f66f7ed5e49938">LIPC_GETTER_VTOI</a>(value)&#160;&#160;&#160;(*(int *)(value))</td></tr>
+<tr class="memitem:ga68f9e2c8dd6674cb83f66f7ed5e49938"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga68f9e2c8dd6674cb83f66f7ed5e49938">LIPC_GETTER_VTOI</a>(value)&#160;&#160;&#160;(*(int *)(value))</td></tr>
 <tr class="separator:ga68f9e2c8dd6674cb83f66f7ed5e49938"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga484dcbbdbe5a917db52b62e952fea851"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga484dcbbdbe5a917db52b62e952fea851">LIPC_SETTER_VTOI</a>(value)&#160;&#160;&#160;((long int)(value))</td></tr>
+<tr class="memitem:ga484dcbbdbe5a917db52b62e952fea851"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga484dcbbdbe5a917db52b62e952fea851">LIPC_SETTER_VTOI</a>(value)&#160;&#160;&#160;((long int)(value))</td></tr>
 <tr class="separator:ga484dcbbdbe5a917db52b62e952fea851"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecff4282173a21e2d42192a2d83ed777"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#gaecff4282173a21e2d42192a2d83ed777">LIPC_GETTER_VTOS</a>(value)&#160;&#160;&#160;((char *)(value))</td></tr>
+<tr class="memitem:gaecff4282173a21e2d42192a2d83ed777"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#gaecff4282173a21e2d42192a2d83ed777">LIPC_GETTER_VTOS</a>(value)&#160;&#160;&#160;((char *)(value))</td></tr>
 <tr class="separator:gaecff4282173a21e2d42192a2d83ed777"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaee88cd391ed520acee52392558391af9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#gaee88cd391ed520acee52392558391af9">LIPC_SETTER_VTOS</a>(value)&#160;&#160;&#160;((char *)(value))</td></tr>
+<tr class="memitem:gaee88cd391ed520acee52392558391af9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#gaee88cd391ed520acee52392558391af9">LIPC_SETTER_VTOS</a>(value)&#160;&#160;&#160;((char *)(value))</td></tr>
 <tr class="separator:gaee88cd391ed520acee52392558391af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga3e343d7ba05fcf71c1c43e42b7765e48"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>) (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, void *value, void *data)</td></tr>
+<tr class="memitem:ga3e343d7ba05fcf71c1c43e42b7765e48"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>) (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, void *value, void *data)</td></tr>
 <tr class="separator:ga3e343d7ba05fcf71c1c43e42b7765e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga2e02f675afbc3b56e8c68cabec7c2429"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga2e02f675afbc3b56e8c68cabec7c2429">LipcGetPropAccessTimeout</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc)</td></tr>
+<tr class="memitem:ga2e02f675afbc3b56e8c68cabec7c2429"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga2e02f675afbc3b56e8c68cabec7c2429">LipcGetPropAccessTimeout</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc)</td></tr>
 <tr class="separator:ga2e02f675afbc3b56e8c68cabec7c2429"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0d931f598ae59967fff43f1752f8122"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#gaa0d931f598ae59967fff43f1752f8122">LipcGetIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, int *value)</td></tr>
+<tr class="memitem:gaa0d931f598ae59967fff43f1752f8122"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#gaa0d931f598ae59967fff43f1752f8122">LipcGetIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, int *value)</td></tr>
 <tr class="separator:gaa0d931f598ae59967fff43f1752f8122"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7f2630ba86754eae1943a6d1b15c924f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga7f2630ba86754eae1943a6d1b15c924f">LipcSetIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, int value)</td></tr>
+<tr class="memitem:ga7f2630ba86754eae1943a6d1b15c924f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga7f2630ba86754eae1943a6d1b15c924f">LipcSetIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, int value)</td></tr>
 <tr class="separator:ga7f2630ba86754eae1943a6d1b15c924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9f733c251fe6b7306208c94ea77f7923"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, char **value)</td></tr>
+<tr class="memitem:ga9f733c251fe6b7306208c94ea77f7923"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, char **value)</td></tr>
 <tr class="separator:ga9f733c251fe6b7306208c94ea77f7923"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf33e704714f7178b11fb67cc480cb960"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#gaf33e704714f7178b11fb67cc480cb960">LipcSetStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, const char *value)</td></tr>
+<tr class="memitem:gaf33e704714f7178b11fb67cc480cb960"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#gaf33e704714f7178b11fb67cc480cb960">LipcSetStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, const char *value)</td></tr>
 <tr class="separator:gaf33e704714f7178b11fb67cc480cb960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga91e0573d22d94185b61807fafbf311e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString</a> (char *string)</td></tr>
+<tr class="memitem:ga14206a75610620e0367289f4bd8a292e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga14206a75610620e0367289f4bd8a292e">LipcAccessHasharrayProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, <a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> *ha)</td></tr>
+<tr class="separator:ga14206a75610620e0367289f4bd8a292e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91e0573d22d94185b61807fafbf311e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString</a> (char *string)</td></tr>
 <tr class="separator:ga91e0573d22d94185b61807fafbf311e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b2f737327362060b609e5c93c9c3899"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga6b2f737327362060b609e5c93c9c3899">LipcRegisterIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, <a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> getter, <a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> setter, void *data)</td></tr>
+<tr class="memitem:ga6b2f737327362060b609e5c93c9c3899"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga6b2f737327362060b609e5c93c9c3899">LipcRegisterIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> getter, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> setter, void *data)</td></tr>
 <tr class="separator:ga6b2f737327362060b609e5c93c9c3899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga640a13b4f5f3073b534d02e9a2857216"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga640a13b4f5f3073b534d02e9a2857216">LipcRegisterStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, <a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> getter, <a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> setter, void *data)</td></tr>
+<tr class="memitem:ga640a13b4f5f3073b534d02e9a2857216"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga640a13b4f5f3073b534d02e9a2857216">LipcRegisterStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> getter, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> setter, void *data)</td></tr>
 <tr class="separator:ga640a13b4f5f3073b534d02e9a2857216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga66392acd2f169f69e630d5cdd019233c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-props.html#ga66392acd2f169f69e630d5cdd019233c">LipcUnregisterProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, void **data)</td></tr>
+<tr class="memitem:ga5145ce000eb27ffa07dd351b6279d1de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga5145ce000eb27ffa07dd351b6279d1de">LipcRegisterHasharrayProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> callback, void *data)</td></tr>
+<tr class="separator:ga5145ce000eb27ffa07dd351b6279d1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga66392acd2f169f69e630d5cdd019233c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga66392acd2f169f69e630d5cdd019233c">LipcUnregisterProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, void **data)</td></tr>
 <tr class="separator:ga66392acd2f169f69e630d5cdd019233c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Accessing and exposing application properties. </p>
+<p>Accessing and exposing properties. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="gab16e9ea61f0938cea7d465b6c7b96530"></a>
 <div class="memitem">
@@ -114,7 +118,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="group__lipc-props.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, service, &quot;_properties&quot;, value)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="group__lipc-property.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, service, &quot;_properties&quot;, value)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -216,9 +220,9 @@ Functions</h2></td></tr>
 <p>When the getter is called for the integer property, one has to set the address pointed by the *value to the desired integer value.</p>
 <p>When the getter is called for the string property, the buffer pointed by the *value is preallocated to the initial size. This size is available in the *data parameter. If the buffer is too small for storing desired string value, one should return the LIPC_ERROR_BUFFER_TOO_SMALL code and pass the required buffer size in the *data argument. In such a case, the callback function will be called again with the requested buffer size.</p>
 <p>When the setter is called, the value parameter contains the integer value itself or it points to the memory buffer, respectively for the integer property or for the string property.</p>
-<p>For convenience, one can use one of the helper macros (<a class="el" href="group__lipc-props.html#ga68f9e2c8dd6674cb83f66f7ed5e49938">LIPC_GETTER_VTOI()</a>, <a class="el" href="group__lipc-props.html#ga484dcbbdbe5a917db52b62e952fea851">LIPC_SETTER_VTOI()</a>, <a class="el" href="group__lipc-props.html#gaecff4282173a21e2d42192a2d83ed777">LIPC_GETTER_VTOS()</a> or <a class="el" href="group__lipc-props.html#gaee88cd391ed520acee52392558391af9">LIPC_SETTER_VTOS()</a>) for casting the value parameter into the proper type based on the callback type.</p>
+<p>For convenience, one can use one of the helper macros (<a class="el" href="group__lipc-property.html#ga68f9e2c8dd6674cb83f66f7ed5e49938">LIPC_GETTER_VTOI()</a>, <a class="el" href="group__lipc-property.html#ga484dcbbdbe5a917db52b62e952fea851">LIPC_SETTER_VTOI()</a>, <a class="el" href="group__lipc-property.html#gaecff4282173a21e2d42192a2d83ed777">LIPC_GETTER_VTOS()</a> or <a class="el" href="group__lipc-property.html#gaee88cd391ed520acee52392558391af9">LIPC_SETTER_VTOS()</a>) for casting the value parameter into the proper type based on the callback type.</p>
 <p>In all cases, with the exception of the string property getter, the data parameter will contain the value passed during the property registration.</p>
-<p>The return value of the callback function will be used as a return value for the caller, e.g. <a class="el" href="group__lipc-props.html#gaa0d931f598ae59967fff43f1752f8122">LipcGetIntProperty()</a>. One exception from this rule is a getter for a string property, where the LIPC_ERROR_BUFFER_TOO_SMALL code is used internally by the LIPC library.</p>
+<p>The return value of the callback function will be used as a return value for the caller, e.g. <a class="el" href="group__lipc-property.html#gaa0d931f598ae59967fff43f1752f8122">LipcGetIntProperty()</a>. One exception from this rule is a getter for a string property, where the LIPC_ERROR_BUFFER_TOO_SMALL code is used internally by the LIPC library.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lipc</td><td>LIPC library handler. </td></tr>
@@ -392,7 +396,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get the value of the string property.</p>
-<p>The memory for the returned string is allocated internally by the library and should be freed with the <a class="el" href="group__lipc-props.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString()</a>.</p>
+<p>The memory for the returned string is allocated internally by the library and should be freed with the <a class="el" href="group__lipc-property.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lipc</td><td>LIPC library handler. </td></tr>
@@ -455,6 +459,56 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga14206a75610620e0367289f4bd8a292e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a> LipcAccessHasharrayProperty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *&#160;</td>
+          <td class="paramname"><em>lipc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>service</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>property</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> *&#160;</td>
+          <td class="paramname"><em>ha</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Access the value of the hash-array property.</p>
+<p>The hash-array handler passed to this function has to be initialized with the <a class="el" href="group__lipc-hasharray.html#ga36c639473d6e5dbfcc675446cfa9c138">LipcHasharrayNew()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lipc</td><td>LIPC library handler. </td></tr>
+    <tr><td class="paramname">service</td><td>The service name. </td></tr>
+    <tr><td class="paramname">property</td><td>The property name. </td></tr>
+    <tr><td class="paramname">ha</td><td>The LIPC hash-array handler. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The status code. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga91e0573d22d94185b61807fafbf311e7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -497,13 +551,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
           <td class="paramname"><em>getter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
           <td class="paramname"><em>setter</em>, </td>
         </tr>
         <tr>
@@ -554,13 +608,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
           <td class="paramname"><em>getter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__lipc-props.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
           <td class="paramname"><em>setter</em>, </td>
         </tr>
         <tr>
@@ -577,13 +631,62 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Register new string property.</p>
-<p>For the information about the property access mode, see the documentation of the <a class="el" href="group__lipc-props.html#ga6b2f737327362060b609e5c93c9c3899">LipcRegisterIntProperty()</a>.</p>
+<p>For the information about the property access mode, see the documentation of the <a class="el" href="group__lipc-property.html#ga6b2f737327362060b609e5c93c9c3899">LipcRegisterIntProperty()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lipc</td><td>LIPC library handler. </td></tr>
     <tr><td class="paramname">property</td><td>The property name. </td></tr>
     <tr><td class="paramname">getter</td><td>Getter callback if property is readable. </td></tr>
     <tr><td class="paramname">setter</td><td>Setter callback if property is writable. </td></tr>
+    <tr><td class="paramname">data</td><td>Data pointer passed to the callback function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The status code. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5145ce000eb27ffa07dd351b6279d1de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a> LipcRegisterHasharrayProperty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *&#160;</td>
+          <td class="paramname"><em>lipc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>property</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register new hash-array property.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lipc</td><td>LIPC library handler. </td></tr>
+    <tr><td class="paramname">property</td><td>The property name. </td></tr>
+    <tr><td class="paramname">callback</td><td>Getter and setter callback function. </td></tr>
     <tr><td class="paramname">data</td><td>Data pointer passed to the callback function. </td></tr>
   </table>
   </dd>
@@ -638,7 +741,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 16 2016 15:32:14 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 19 2016 22:43:48 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

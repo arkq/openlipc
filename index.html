@@ -52,9 +52,9 @@
 <div class="line">  <span class="keywordflow">if</span> ((lipc = <a class="code" href="group__lipc-init.html#gaee381b2f9e9e36284a58cd98a928fc45">LipcOpenNoName</a>()) == NULL)</div>
 <div class="line">    <span class="keywordflow">return</span> 1;</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="group__lipc-props.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, <span class="stringliteral">&quot;com.lab126.powerd&quot;</span>, <span class="stringliteral">&quot;status&quot;</span>, &amp;status) == LIPC_OK) {</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="group__lipc-property.html#ga9f733c251fe6b7306208c94ea77f7923">LipcGetStringProperty</a>(lipc, <span class="stringliteral">&quot;com.lab126.powerd&quot;</span>, <span class="stringliteral">&quot;status&quot;</span>, &amp;status) == LIPC_OK) {</div>
 <div class="line">    puts(status);</div>
-<div class="line">    <a class="code" href="group__lipc-props.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString</a>(status);</div>
+<div class="line">    <a class="code" href="group__lipc-property.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString</a>(status);</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <a class="code" href="group__lipc-init.html#ga56515d5c74877ef2fb24956d1b8bc30b">LipcClose</a>(lipc);</div>
@@ -65,7 +65,7 @@
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 16 2016 15:32:14 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 19 2016 22:43:48 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>
