@@ -77,8 +77,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga9f733c251fe6b7306208c94ea77f7923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf33e704714f7178b11fb67cc480cb960"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#gaf33e704714f7178b11fb67cc480cb960">LipcSetStringProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, const char *value)</td></tr>
 <tr class="separator:gaf33e704714f7178b11fb67cc480cb960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga14206a75610620e0367289f4bd8a292e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga14206a75610620e0367289f4bd8a292e">LipcAccessHasharrayProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, <a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> *ha)</td></tr>
-<tr class="separator:ga14206a75610620e0367289f4bd8a292e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a8ab56a4ac6acebb4e9efaa0ee6a519"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga8a8ab56a4ac6acebb4e9efaa0ee6a519">LipcAccessHasharrayProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *service, const char *property, const <a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> *ha, <a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> **ha_out)</td></tr>
+<tr class="separator:ga8a8ab56a4ac6acebb4e9efaa0ee6a519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga91e0573d22d94185b61807fafbf311e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga91e0573d22d94185b61807fafbf311e7">LipcFreeString</a> (char *string)</td></tr>
 <tr class="separator:ga91e0573d22d94185b61807fafbf311e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6b2f737327362060b609e5c93c9c3899"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__lipc-init.html#ga7d8df6c5b4056082089f3aea43f6d2b6">LIPCcode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lipc-property.html#ga6b2f737327362060b609e5c93c9c3899">LipcRegisterIntProperty</a> (<a class="el" href="group__lipc-init.html#gae63999c8303e3bf63048a5365843eec6">LIPC</a> *lipc, const char *property, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> getter, <a class="el" href="group__lipc-property.html#ga3e343d7ba05fcf71c1c43e42b7765e48">LipcPropCallback</a> setter, void *data)</td></tr>
@@ -459,7 +459,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga14206a75610620e0367289f4bd8a292e"></a>
+<a class="anchor" id="ga8a8ab56a4ac6acebb4e9efaa0ee6a519"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -484,8 +484,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> *&#160;</td>
-          <td class="paramname"><em>ha</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> *&#160;</td>
+          <td class="paramname"><em>ha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__lipc-hasharray.html#gaddc148c5b1d814010bb46da975f4e546">LIPCha</a> **&#160;</td>
+          <td class="paramname"><em>ha_out</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -495,13 +501,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Access the value of the hash-array property.</p>
-<p>The hash-array handler passed to this function has to be initialized with the <a class="el" href="group__lipc-hasharray.html#ga36c639473d6e5dbfcc675446cfa9c138">LipcHasharrayNew()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lipc</td><td>LIPC library handler. </td></tr>
     <tr><td class="paramname">service</td><td>The service name. </td></tr>
     <tr><td class="paramname">property</td><td>The property name. </td></tr>
-    <tr><td class="paramname">ha</td><td>The LIPC hash-array handler. </td></tr>
+    <tr><td class="paramname">ha</td><td>An input LIPC hash-array handler or NULL if there is no input. </td></tr>
+    <tr><td class="paramname">ha_out</td><td>The pointer to the address, where the output hash-array handler will be stored. If the output value is not desired, one can pass NULL value in this parameter. </td></tr>
   </table>
   </dd>
 </dl>
@@ -741,7 +747,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 23 2016 21:59:17 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 23 2016 23:36:34 for [open]lipc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>
