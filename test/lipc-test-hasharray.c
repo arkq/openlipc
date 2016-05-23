@@ -30,7 +30,7 @@ int main(void) {
 	assert((ha = LipcHasharrayNew(lipc)) != NULL);
 	assert(LipcHasharrayGetHashCount(ha) == 0);
 
-	int index = 0xDEAD;
+	size_t index = 0xDEAD;
 	assert(LipcHasharrayAddHash(ha, &index) == LIPC_OK);
 	assert(LipcHasharrayGetHashCount(ha) == 1);
 	assert(index == 0);
@@ -91,6 +91,32 @@ int main(void) {
 	assert(memcmp(blob_, blob, size) == 0);
 	/* check if value is stored internally */
 	assert((void *)blob_ != (void *)blob);
+
+	/* string representation */
+
+	char buffer[512];
+	size_t buffer_size = sizeof(buffer);
+	assert(LipcHasharrayToString(ha, buffer, &buffer_size) == LIPC_OK);
+	assert(strcmp(buffer, "0:{ Int=45067 Key=\"Value\" Doom=(binary) }\n ") == 0);
+	assert(buffer_size == 43);
+
+	/* copying entire structure */
+
+	LIPCha *ha_;
+	char buffer_[512];
+
+	assert((ha_ = LipcHasharrayNew(lipc)) != NULL);
+	assert(LipcHasharrayCopy(ha_, ha) == LIPC_OK);
+	buffer_size = sizeof(buffer_);
+	assert(LipcHasharrayToString(ha_, buffer_, &buffer_size) == LIPC_OK);
+	assert(strcmp(buffer_, buffer) == 0);
+	LipcHasharrayDestroy(ha_);
+
+	assert((ha_ = LipcHasharrayClone(ha)) != NULL);
+	buffer_size = sizeof(buffer_);
+	assert(LipcHasharrayToString(ha_, buffer_, &buffer_size) == LIPC_OK);
+	assert(strcmp(buffer_, buffer) == 0);
+	LipcHasharrayDestroy(ha_);
 
 	LipcHasharrayDestroy(ha);
 	LipcClose(lipc);

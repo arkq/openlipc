@@ -22,6 +22,9 @@ Symbols available in the openlipc.h header file:
 - LipcGetStringProperty
 - LipcHasharrayAddHash
 - LipcHasharrayCheckKey
+- LipcHasharrayClone
+- LipcHasharrayCopy
+- LipcHasharrayCopyHash
 - LipcHasharrayDestroy
 - LipcHasharrayFree
 - LipcHasharrayGetBlob
@@ -33,6 +36,9 @@ Symbols available in the openlipc.h header file:
 - LipcHasharrayPutBlob
 - LipcHasharrayPutInt
 - LipcHasharrayPutString
+- LipcHasharrayRestore
+- LipcHasharraySave
+- LipcHasharrayToString
 - LipcNewEvent
 - LipcOpen
 - LipcOpenEx
@@ -60,15 +66,9 @@ Undocumented (not yet) symbols:
 - LipcCbThreadInit
 - LipcDeInitPropertyHandling
 - LipcEnsureBusReadyForWrite
-- LipcHasharrayClone
-- LipcHasharrayCopy
-- LipcHasharrayCopyHash
 - LipcHasharrayGetKey
 - LipcHasharrayPrepareToSend
 - LipcHasharrayReconstruct
-- LipcHasharrayRestore
-- LipcHasharraySave
-- LipcHasharrayToString
 - LipcInitPropertyHandling
 - LipcPrepareFdSetsFromWatches
 - LipcProcessMethod

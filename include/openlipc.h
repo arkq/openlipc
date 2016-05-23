@@ -302,6 +302,82 @@ LIPCcode LipcHasharrayGetBlob(LIPCha *ha, int index, const char *key,
 LIPCcode LipcHasharrayPutBlob(LIPCha *ha, int index, const char *key,
                               const unsigned char *data, size_t size);
 
+/**
+ * Copy a hash-array data structure.
+ *
+ * The destination hash-array structure handler has to be initialized with the
+ * LipcHasharrayNew() function.
+ *
+ * @param dest The destination hash-array handler.
+ * @param src The source hash-array handler.
+ * @return The status code. */
+LIPCcode LipcHasharrayCopy(LIPCha *dest, const LIPCha *src);
+
+/**
+ * Copy a single hash map of the hash-array data structure.
+ *
+ * The destination hash-array structure handler has to be initialized with the
+ * LipcHasharrayNew() function.
+ *
+ * @param dest The destination hash-array handler.
+ * @param dest_index The index in the destination hash-array structure, where
+ *   the copied hash map will be placed.
+ * @param src The source hash-array handler.
+ * @param src_index The index within the source hash-array structure, from
+ *   where the hash map is copied.
+ * @return The status code. */
+LIPCcode LipcHasharrayCopyHash(LIPCha *dest, int dest_index,
+                               const LIPCha *src, int src_index);
+
+/**
+ * Clone a hash-array data structure.
+ *
+ * This function is (almost) an equivalent of calling the LipcHasharrayCopy()
+ * function using a newly initialized hash-array handler. However, using this
+ * function ensures, that the internal hash-array key and few other internal
+ * fields are copied too. The exact meaning of these fields is unknown.
+ *
+ * @param ha The hash-array handler to the structure which should be cloned.
+ * @return On success the LIPC hash-array handler to the new data structure
+ *   is returned. Upon error this function returns NULL. */
+LIPCha *LipcHasharrayClone(const LIPCha *ha);
+
+/**
+ * Save hash-array memory into the given file descriptor.
+ *
+ * @param ha The hash-array handler.
+ * @param fd Opened file descriptor with the write permission.
+ * @return The status code. */
+LIPCcode LipcHasharraySave(const LIPCha *ha, int fd);
+
+/**
+ * Restore hash-array form the memory read from the given file descriptor.
+ *
+ * @param lipc LIPC library handler.
+ * @param fd Opened file descriptor with the read permission.
+ * @return On success the LIPC hash-array handler to the restored data
+ *   structure is returned. Upon error this function returns NULL. */
+LIPCha *LipcHasharrayRestore(LIPC *lipc, int fd);
+
+/**
+ * Get string representation of the given hash-array.
+ *
+ * In order to determine the number of bytes required to store the string
+ * representation of the given hash-array data structure, one should call this
+ * function with the size parameter initialized to 0. The number of required
+ * bytes will be returned back in this parameter - in fact the size parameter
+ * is always modified, and the number of required bytes is returned in it (be
+ * careful when reusing this variable).
+ *
+ * @param ha The hash-array handler.
+ * @param str The pointer to the address, where the hash-array string
+ *   representation will be stored.
+ * @param size The pointer to the address, where the size of the str buffer
+ *   is passed. On return, the number of actually used bytes will be stored
+ *   at this address.
+ * @return The status code. */
+LIPCcode LipcHasharrayToString(const LIPCha *ha, char *str, size_t *size);
+
 /** @}
  ***/
 
