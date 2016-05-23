@@ -447,16 +447,17 @@ LIPCcode LipcSetStringProperty(LIPC *lipc, const char *service,
 /**
  * Access the value of the hash-array property.
  *
- * The hash-array handler passed to this function has to be initialized with
- * the LipcHasharrayNew().
- *
  * @param lipc LIPC library handler.
  * @param service The service name.
  * @param property The property name.
- * @param ha The LIPC hash-array handler.
+ * @param ha An input LIPC hash-array handler or NULL if there is no input.
+ * @param ha_out The pointer to the address, where the output hash-array
+ *   handler will be stored. If the output value is not desired, one can
+ *   pass NULL value in this parameter.
  * @return The status code. */
 LIPCcode LipcAccessHasharrayProperty(LIPC *lipc, const char *service,
-                                     const char *property, LIPCha *ha);
+                                     const char *property, const LIPCha *ha,
+                                     LIPCha **ha_out);
 
 /**
  * Convenience macro for getting all properties of given service.

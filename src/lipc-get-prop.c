@@ -20,34 +20,44 @@
 #include <syslog.h>
 
 
+enum property {
+	PROPERTY_INT,
+	PROPERTY_STR,
+	PROPERTY_HAS,
+};
+
 int main(int argc, char *argv[]) {
 
 	int opt;
 
-	int integer = 1;
+	enum property kind = PROPERTY_INT;
 	int end_nl = 1;
 	int quiet = 0;
 
-	while ((opt = getopt(argc, argv, "hiseq")) != -1)
+	while ((opt = getopt(argc, argv, "hisjeq")) != -1)
 		switch (opt) {
 		case 'h':
-			printf("usage: %s [-iseq] <publisher> <property>\n\n"
+			printf("usage: %s [-isjeq] <publisher> <property>\n\n"
 				"  publisher - the unique name of the publisher\n"
 				"  property  - the name of the property to get\n"
 				"\n"
 				"options:\n"
 				"  -i\tpublisher published an integer property\n"
 				"  -s\tpublisher published a string property\n"
+				"  -j\tpublisher published a hash-array property\n"
 				"  -e\tdo not print new line at the end\n"
 				"  -q\tdo not print error message\n",
 				argv[0]);
 			return EXIT_SUCCESS;
 
 		case 'i':
-			integer = 1;
+			kind = PROPERTY_INT;
 			break;
 		case 's':
-			integer = 0;
+			kind = PROPERTY_STR;
+			break;
+		case 'j':
+			kind = PROPERTY_HAS;
 			break;
 		case 'e':
 			end_nl = 0;
@@ -80,18 +90,33 @@ return_usage:
 		return EXIT_FAILURE;
 	}
 
-	if (integer) {
+	switch (kind) {
+	case PROPERTY_INT: {
 		int value;
 		if ((code = LipcGetIntProperty(lipc, source, property, &value)) == LIPC_OK)
 			printf("%d", value);
+		break;
 	}
-	else {
+	case PROPERTY_STR: {
 		char *value;
 		if ((code = LipcGetStringProperty(lipc, source, property, &value)) == LIPC_OK) {
 			printf("%s", value);
 			LipcFreeString(value);
 		}
+		break;
 	}
+	case PROPERTY_HAS: {
+		LIPCha *ha = NULL;
+		char *value = NULL;
+		size_t size = 0;
+		if ((code = LipcAccessHasharrayProperty(lipc, source, property, NULL, &ha)) == LIPC_OK &&
+				(code = LipcHasharrayToString(ha, NULL, &size)) == LIPC_OK &&
+				(code = LipcHasharrayToString(ha, value = malloc(size), &size)) == LIPC_OK)
+			printf(" %s", value);
+		if (ha != NULL)
+			LipcHasharrayDestroy(ha);
+		free(value);
+	}}
 
 	if (code == LIPC_OK && end_nl)
 		printf("\n");
