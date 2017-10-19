@@ -67,13 +67,13 @@ int main(int argc, char *argv[]) {
 			break;
 
 		default:
-return_usage:
+usage:
 			fprintf(stderr, "Try '%s -h' for more information.\n", argv[0]);
 			return EXIT_FAILURE;
 		}
 
 	if (argc - optind != 2)
-		goto return_usage;
+		goto usage;
 
 	const char *source = argv[optind];
 	const char *property = argv[optind + 1];

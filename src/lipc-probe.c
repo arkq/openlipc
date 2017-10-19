@@ -64,7 +64,7 @@ static gboolean get_sources(GSList **sources) {
 			NULL, NULL, &error);
 	if (dbus == NULL) {
 		fprintf(stderr, "error: failed to get DBus connection: %s\n", error->message);
-		goto return_failure;
+		goto fail;
 	}
 
 	message = g_dbus_message_new_method_call("org.freedesktop.DBus",
@@ -73,7 +73,7 @@ static gboolean get_sources(GSList **sources) {
 			G_DBUS_SEND_MESSAGE_FLAGS_NONE, -1, NULL, NULL, &error);
 	if (reply == NULL) {
 		fprintf(stderr, "error: failed to get source list: %s\n", error->message);
-		goto return_failure;
+		goto fail;
 	}
 
 	g_variant_get(g_dbus_message_get_body(reply), "(as)", &iter);
@@ -85,13 +85,13 @@ static gboolean get_sources(GSList **sources) {
 	g_variant_iter_free(iter);
 
 	rv = TRUE;
-	goto return_success;
+	goto final;
 
-return_failure:
+fail:
 	g_error_free(error);
 	rv = FALSE;
 
-return_success:
+final:
 	if (reply != NULL)
 		g_object_unref(reply);
 	if (message != NULL)
@@ -207,7 +207,7 @@ int main(int argc, char *argv[]) {
 			break;
 
 		default:
-return_usage:
+usage:
 			fprintf(stderr, "Try '%s -h' for more information.\n", argv[0]);
 			return EXIT_FAILURE;
 		}
@@ -223,7 +223,7 @@ return_usage:
 		while (argc - optind)
 			sources = g_slist_prepend(sources, g_strdup(argv[optind++]));
 		if (sources == NULL)
-			goto return_usage;
+			goto usage;
 	}
 
 	LipcSetLlog(LAB126_LOG_ALL & ~LAB126_LOG_DEBUG_ALL);

@@ -58,13 +58,13 @@ int main(int argc, char *argv[]) {
 			break;
 
 		default:
-return_usage:
+usage:
 			fprintf(stderr, "Try '%s -h' for more information.\n", argv[0]);
 			return EXIT_FAILURE;
 		}
 
 	if (argc - optind != 3)
-		goto return_usage;
+		goto usage;
 
 	const char *source = argv[optind];
 	const char *property = argv[optind + 1];
@@ -91,7 +91,7 @@ return_usage:
 			if (!quiet)
 				fprintf(stderr, "error: value is not an integer\n");
 			code = LIPC_ERROR_INVALID_ARG;
-			goto return_failure;
+			goto fail;
 		}
 		code = LipcSetIntProperty(lipc, source, property, value_int);
 	}
@@ -112,7 +112,7 @@ return_usage:
 				source, property, code, LipcGetErrorString(code));
 	}
 
-return_failure:
+fail:
 	LipcClose(lipc);
 	return code == LIPC_OK ? EXIT_SUCCESS : EXIT_FAILURE;
 }
