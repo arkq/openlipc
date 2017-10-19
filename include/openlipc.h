@@ -53,6 +53,10 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @defgroup lipc-init Initialization
  * @brief Library initialization and error handling.
@@ -845,5 +849,9 @@ void LipcSetLlog(int mask);
 
 /** @}
  ***/
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* OPENLIPC_H */
